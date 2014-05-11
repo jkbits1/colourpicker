@@ -9,6 +9,10 @@ function setPreviewColor(color) {
 
     // set bkg color
     $(".preview").css("background-color", color);
+
+    var colorRgb = $(".preview").css("background-color");
+
+    $(".color-code").text(colorRgb);
 }
 
 $(document).ready(function(){
