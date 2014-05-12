@@ -7,17 +7,21 @@ function setPreviewColor(color) {
         return;
     }
 
-    // set bkg color
-    $(".preview").css("background-color", color);
+    var $preview = $(".preview");
 
-    var colorRgb = $(".preview").css("background-color");
+    // set bkg color
+    $preview.css("background-color", color);
+
+    var colorRgb = $preview.css("background-color");
 
     $(".color-code").text(colorRgb);
 }
 
 $(document).ready(function(){
 
-    var colour = $(".preview").css("background-color");
+    var $preview = $(".preview");
+
+    var colour = $preview.css("background-color");
 
     $(document).on('keypress keydown keyup', '#color', function(){
 
@@ -36,13 +40,9 @@ $(document).ready(function(){
         addBox(element);
     });
 
-    ;
-
     var randomIndex = Math.floor(Math.random() * favColours.length);
 
-    $(".preview").css("background-color", favColours[randomIndex]);
-
-
+    $preview.css("background-color", favColours[randomIndex]);
 
 });
 
@@ -55,7 +55,35 @@ function addBox(color){
 
 function addColourToFavourites(){
 
-    addBox($('#color').val());
+    if (roomForOneMoreFavourite() === false) {
+        removeLastFav();
+    }
 
-    $('#color').val("");
+    var $colourInput = $('#color');
+
+    addBox($colourInput.val());
+
+    $colourInput.val("");
+}
+
+function roomForOneMoreFavourite(){
+
+    var favsCount = $("#colors .item").length;
+
+    if (favsCount <
+//        16
+    10
+        ) {
+
+        return true;
+    }
+
+    return false;
+}
+
+function removeLastFav(){
+
+    var lastFav = $("#colors .item:last-child");
+
+    lastFav.remove();
 }
