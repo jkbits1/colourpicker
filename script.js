@@ -29,6 +29,21 @@ $(document).ready(function(){
 
     $(document).on('click', '#add-to-favorite', addColourToFavourites);
 
+    var favColours = ["22ac5e", "d68236", "red", "green", "blue", "violet", "orange", "purple", "yellow", "pink"];
+
+    $.each(favColours, function(index, element){
+
+        addBox(element);
+    });
+
+    ;
+
+    var randomIndex = Math.floor(Math.random() * favColours.length);
+
+    $(".preview").css("background-color", favColours[randomIndex]);
+
+
+
 });
 
 function addBox(color){
