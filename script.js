@@ -64,6 +64,8 @@ function addColourToFavourites(){
     addBox($colourInput.val());
 
     $colourInput.val("");
+
+    $colourInput.focus();
 }
 
 function roomForOneMoreFavourite(){
@@ -71,8 +73,8 @@ function roomForOneMoreFavourite(){
     var favsCount = $("#colors .item").length;
 
     if (favsCount <
-//        16
-    10
+        16
+//    10
         ) {
 
         return true;
