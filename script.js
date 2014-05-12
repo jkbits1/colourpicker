@@ -26,4 +26,21 @@ $(document).ready(function(){
         setPreviewColor($('input').val());
 
     });
+
+    $(document).on('click', '#add-to-favorite', addColourToFavourites);
+
 });
+
+function addBox(color){
+
+    var boxDiv = "<div class='item' style='background-color: " + color + "'></div>";
+
+    $("#colors").prepend(boxDiv);
+}
+
+function addColourToFavourites(){
+
+    addBox($('#color').val());
+
+    $('#color').val("");
+}
