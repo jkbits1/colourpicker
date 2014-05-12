@@ -20,8 +20,9 @@ function setPreviewColor(color) {
 $(document).ready(function(){
 
     var $preview = $(".preview");
+//    var $colourItem = $("#colors .item");
 
-    var colour = $preview.css("background-color");
+    var previewColour = undefined; //$preview.css("background-color");
 
     $(document).on('keypress keydown keyup', '#color', function(){
 
@@ -31,7 +32,23 @@ $(document).ready(function(){
 
     });
 
+
+
     $(document).on('click', '#add-to-favorite', addColourToFavourites);
+
+    $(document).on('mouseenter', "#colors .item", function(){
+
+        previewColour = $preview.css("background-color");
+
+        $preview.css("background-color", $(this).css("background-color"));
+
+//        $('#color').val($(this).css("background-color"));
+
+    }).on('mouseleave', "#colors .item", function(){
+
+        $preview.css("background-color", previewColour);
+    });
+
 
     var favColours = ["22ac5e", "d68236", "red", "green", "blue", "violet", "orange", "purple", "yellow", "pink"];
 
@@ -43,7 +60,6 @@ $(document).ready(function(){
     var randomIndex = Math.floor(Math.random() * favColours.length);
 
     $preview.css("background-color", favColours[randomIndex]);
-
 });
 
 function addBox(color){
